@@ -1,9 +1,17 @@
 import sqlite3
+
+import os
+
+# Force NLTK to download if needed (BEFORE pyresparser is imported)
+if not os.path.exists(os.path.expanduser('~/nltk_data/corpora/stopwords')):
+    import nltk
+    nltk.download('stopwords')
+    nltk.download('punkt')
+
 import streamlit as st
 import pandas as pd
 import base64,random
 import time,datetime
-import nltk
 from pyresparser import ResumeParser
 from pdfminer3.layout import LAParams, LTTextBox
 from pdfminer3.pdfpage import PDFPage
