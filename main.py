@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import base64,random
 import time,datetime
+import nltk
 from pyresparser import ResumeParser
 from pdfminer3.layout import LAParams, LTTextBox
 from pdfminer3.pdfpage import PDFPage
@@ -92,8 +93,8 @@ st.set_page_config(
    page_icon='./Logo/SRA_Logo.png',
 )
 def run():
-    st.title("Smart Resume Analyser Using Resume Parser")
-    st.sidebar.markdown("# Choose User")
+    st.title("Yash's Resume Analyzer")
+    st.sidebar.markdown("# Select Role – Analyzer or Admin")
     activities = ["Normal User", "Admin"]
     choice = st.sidebar.selectbox("Choose among the given options:", activities)
     img = Image.open('./Logo/logo.png')
@@ -308,7 +309,7 @@ def run():
                 st.error('Something went wrong..')
     else:
         ## Admin Side
-        st.success('Welcome to Admin Side')
+        st.success('Welcome, Yash! This is your private admin panel')
         # st.sidebar.subheader('**ID / Password Required!**')
 
         ad_user = st.text_input("Username")
