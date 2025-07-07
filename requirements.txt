@@ -1,10 +1,8 @@
-pdfminer3
+pdfminer.six
 pyresparser
 streamlit
 pandas
-pafy
 plotly
-pymysql
 streamlit-tags
-PILLOW
+pillow
 yt-dlp
