@@ -23,12 +23,16 @@ from streamlit_tags import st_tags
 from PIL import Image
 #import pymysql
 from Courses import ds_course,web_course,android_course,ios_course,uiux_course,resume_videos,interview_videos
-import pafy
+from yt_dlp import YoutubeDL
 import plotly.express as px
 
 def fetch_yt_video(link):
-    video = pafy.new(link)
-    return video.title
+    try:
+        with YoutubeDL({'quiet': True}) as ydl:
+            info = ydl.extract_info(link, download=False)
+            return info.get('title', 'YouTube Video')
+    except Exception:
+        return "YouTube Video"
 
 def get_table_download_link(df,filename,text):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
